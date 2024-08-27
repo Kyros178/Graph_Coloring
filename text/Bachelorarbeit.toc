@@ -1,0 +1,7 @@
+\babel@toc {english}{}\relax 
+\babel@toc {german}{}\relax 
+\contentsline {section}{\numberline {1}Einleitung}{1}{}%
+\contentsline {section}{\numberline {2}}{1}{}%
+\contentsline {section}{\numberline {3}}{1}{}%
+\contentsline {section}{\numberline {4}Das charakteristische Polynom aus der Perspektive von Matrioiden und Halbmatroiden}{1}{}%
+\contentsline {section}{\numberline {5}Fazit}{1}{}%

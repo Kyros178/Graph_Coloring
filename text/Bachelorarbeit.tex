@@ -1,0 +1,245 @@
+
+
+
+\documentclass[12pt]{article}%{amsart}
+\usepackage[a4paper]{anysize}
+\usepackage[german,english]{babel}
+\usepackage{times}
+\usepackage[utf8]{inputenc}
+\usepackage{layouts}
+
+\usepackage{amssymb,stackengine,scalerel}
+
+\setlength\parindent{0pt} % einrückungen verschwinden nach paragraphen etc
+
+\usepackage{ifthen}
+\newboolean{beweise} 
+\setboolean{beweise}{true}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{subcaption}
+\usepackage{caption}
+
+
+
+% Festlegen der sachen für theoreme, Sätze, Lemma, Corrolare und  Definitionen
+\newtheoremstyle{break}
+  {\topsep}{3pt}%{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+
+\newtheoremstyle{examplestyle}% name of the style to be used
+  {5mm}% measure of space to leave above the theorem. E.g.: 3pt
+  {5mm}% measure of space to leave below the theorem. E.g.: 3pt
+  {\slshape}% name of font to use in the body of the theorem
+  {6pt}% measure of space to indent
+  {\bfseries}% name of head font
+  {}%\newline}% punctuation between head and body
+  {10mm}% space after theorem head
+  {}% Manually specify head
+  
+\theoremstyle{examplestyle}
+\newtheorem{theo}{Theorem}[section]
+\theoremstyle{examplestyle}
+\newtheorem{satz}[theo]{Satz}%[section]
+\theoremstyle{examplestyle}
+\newtheorem{lem}[theo]{Lemma}%[section]
+\theoremstyle{examplestyle}
+\newtheorem{kor}[theo]{Korollar}%[section]
+\theoremstyle{examplestyle}
+\newtheorem{prop}[theo]{Proposition}%[section]
+
+
+%\theoremstyle{definition}
+\theoremstyle{examplestyle}
+\newtheorem{defi}[theo]{Definition}%[section]
+
+% define operators
+\DeclareMathOperator{\rkA}{rang}
+\DeclareMathOperator{\rkP}{rk}
+\DeclareMathOperator{\rkM}{rk}
+\DeclareMathOperator{\codim}{codim}
+
+
+
+
+\begin{document}
+\selectlanguage{german}
+\newcommand{\3}{\ss}
+
+%makros
+\newcommand{\s}[1]{\mathcal{#1}}
+
+
+
+
+\ifthenelse{\boolean{beweise}}
+{
+  
+  \begin{center}
+    \noindent{\large\bf Bachelorarbeit \\ Titel todo  \\ Sommersemester 2024}\\[1cm]
+    \noindent{\large\bf Arbeitstitel:\\ Todo }\\[3cm]
+  \end{center}
+
+  \noindent{\bf Name:} Beckmann\\
+
+  \noindent{\bf Vorname:} Nils\\
+
+  \noindent{\bf Studiengang:} Kognitive Informatik\\
+
+  \noindent{\bf Matrikelnummer:} 2658689\\[3cm]
+
+  \noindent{\bf Gutachter:} Frettlöh todo \\
+
+
+  \noindent{\bf Datum:} 30.09.2024
+
+  \thispagestyle{empty}
+  \newpage
+  
+}{}
+
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+
+\setcounter{page}{1}
+
+\section{Einleitung}
+
+\section{}
+
+\section{}
+
+
+\begin{defi}
+  Ein einfacher Graph $G=(V,E)$ ist ein Tupel bestehend aus den Knoten $V$ und den Kanten $E$. Hierbei verbindet eine Kannte immer genau
+  zwei Knoten miteinander. Die Knoten werden hierbei durch die Nummerierung von $1$ bis $\#V$  benannt ($V=[\#V]$) und eine Kante\\
+  $\{i,j\}\in E$ verbindet
+  die Knoten $i$ und $j$ miteinander. In Zukunft wird $E(G)$ für $E$ benutzt, um deutlich zu machen, von welchem Graphen die Kanten stammen.
+  Außerdem wird $ij$ anstatt $\{i,j\}$ geschrieben.
+\end{defi}
+
+
+  
+\begin{defi} die färbung eines graphen mit kanten $[n]$ ist eine Funktion $\kappa: [n]\to \mathbb{P} $. Die Färbung $\kappa$ ist zulässig,
+  wenn $\kappa(i) \neq \kappa(j)$ für $ij \in E(G)$. Wenn $q\in \mathbb{P}$, dann sei $\chi_G(q)$ die Anzahl zulässiger Färbungen $\kappa: [n]\to [q] $ von $G$, also die Zahl der zulässigen Färbungen von $G$ wobei die Farben von den Zahlen  $1,2,...,q$ dargestellt werden.
+  Die Funktion $\chi_G$ wird das chromatisches Polynom von G genannt.\\
+  Wobei $\mathbb{P}=\mathbb{N}\backslash \{0\}$.%todo prüfen ob ich $\mathbb{P}$ brauche oder auch $\mathbb{N}$ geht 
+\end{defi}
+
+Notiz: Es muss gezeigt werden, dass $\chi_G(q)$ ein Polynom ist. Hierfür siehe Seite 24-25 in \cite{stan}
+
+
+wad sdfsf sf .
+\begin{kor}[Nils Beckmann]
+
+  
+\end{kor}
+
+
+
+
+
+
+
+
+
+
+
+ Randnotiz: Alternativ können Matroide auch über ihre Kreise oder Basen (mit anderen Axiomen) definiert werden (vgl. \cite{MatBuch}).
+
+\section{Das charakteristische Polynom aus der Perspektive von Matrioiden und Halbmatroiden}
+
+% \ref{semiEigenschaften} 
+
+\begin{lem}\label{C-e=C/e}
+ 
+\end{lem}
+\begin{proof}
+
+\end{proof}
+
+
+
+
+
+\begin{defi}
+  
+\end{defi}
+
+
+\begin{prop}[Tutte-Grothedieck Invariante für das Tutte Polynom]\label{T-GInv}
+ 
+\end{prop}
+
+\begin{proof}
+ 
+\end{proof}
+
+
+\section{Fazit}
+
+
+
+
+\newpage
+\thispagestyle{empty}
+
+% zitieren wie folgt: \cite{stan}
+\begin{thebibliography}{9}
+\bibitem{stan}
+  Richard P. Stanley (2007) \emph{An Introduction to Hyperplane Arrangements}, IAS/Park City Mathematics Series, vol. 13, American Mathematical Society
+
+  %enu_comb_stanley.pdf
+\bibitem{enum}
+  Richard P. Stanley(1996), \emph{Enumerative Combinatorics}, vol. 1, Wadsworth and Brooks/Cole,
+Pacific Grove, CA, 1986; second printing, Cambridge University Press 
+
+\bibitem{orlik}
+  Peter Orlik und Hiroaki Terao (1992) \emph{Arrangemnts of Hyperplane}, Springer
+
+\bibitem{SHI/ISH}
+  Drew Armstrong and Brendon Rhoades, \emph{THE SHI ARRANGEMENT AND THE ISH ARRANGEMENT}, 2010, Zugriff am 01.10.2023,
+  arXiv:1009.1655
+
+\bibitem{MIT}
+  Ardila, Federico, \emph{Enumerative and algebraic aspects of matroids and hyperplane arrangements}, 2003, Zugriff am 15.09.2023,
+  https://dspace.mit.edu/handle/1721.1/29287
+
+\bibitem{Linial}
+  Richard P Stanley(1996) \emph{Hyperplane arrangements, interval orders, and trees}, Zugriff am 17.10.2023
+  https://www.pnas.org/doi/abs/10.1073/pnas.93.6.2620
+  %https://scholar.google.de/citations?view\_op=view\_citation\&hl=de\&user=Rc5HbpQAAAAJ\&cstart=100\&pagesize=100\&sortby=pubdate\&citation\_for\_view=Rc5HbpQAAAAJ:yqoGN6RLRZoC
+
+\bibitem{Zas}
+  Thomas Zaslavsky(1975) \emph{Facing up to Arrangements: Face-Count Formulas for Partitions of Space by Hyperplanes}
+  eBook ISBN: 978-0-8218-9955-7, Memoirs of the American Mathematical Society
+
+\bibitem{Atha}
+  Christos A. Athanasiadis(1996), \emph{Characteristic Polynomials of Subspace Arrangements and Finite Fields},
+  advances in mathematics 122 S.193-233,
+  Zugriff am 20.10.2023, https://doi.org/10.1006/aima.1996.0059 
+
+\bibitem{MatBuch}
+  James Oxley (2011) \emph{Matroid Theory} zweite Edition, Oxford University Press Inc., New York,
+  ISBN 978–0–19–856694–6
+
+\bibitem{WhatMat}
+  James Oxley \emph{BRIEFLY, WHAT IS A MATROID?},Zugriff am 10.09.2023
+  https://www.math.lsu.edu/\raisebox{-0.9ex}{\~{}}oxley/matroid\_intro\_summ.pdf
+
+\bibitem{CoxArr}
+  Christos A. Athanasiadis(1998)\emph{Deformations of Coxeter hyperplane arrangements and their characteristic polynomials},
+  Advanced Studies in Pure Mathematics 27, Zugriff am 21.10.2023 auf Google scholar
+  
+\end{thebibliography}
+
+
+
+\end{document}
