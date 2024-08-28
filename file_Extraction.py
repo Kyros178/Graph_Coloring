@@ -1,5 +1,6 @@
 import networkx as nx
 import re
+import numpy as np
 
 #
 def strToAdjDicFormate(str, numNodes):
@@ -36,7 +37,8 @@ def getGraphMatricsFormFile(fileName):
 def getColorAdjMatFromFile(fileName):
   f = open(fileName , "r")
   s = f.read()
-  lis = []
+  colorings = []
+  
   for g in s.split("#")[1:]:
     
     # Regulärer Ausdruck, um alle 'Matrix(...)' Einträge zu finden
@@ -49,14 +51,24 @@ def getColorAdjMatFromFile(fileName):
 
     matchesColorTyp = re.findall(patternColorTyp, g)
 
+    
+    typ = ""
+    mat = []
+
     for match in matchesColorTyp:
-      print(f"Gefundener Farb Typ: {match}")
+      #print(f"Gefundener Farb Typ: {match}")
+      typ = match
       
     # Ausgabe der extrahierten Informationen
     for match in matchesMat:
-      print(f"Gefundene Matrix: {match}")
+      #print(f"Gefundene Matrix: {match}")
+      mat.append(np.array(match))
       
+    colorings.append((typ,mat))
 
+  for tup in colorings:
+    print(tup[0])
+    print(tup[1])
   
 
 
