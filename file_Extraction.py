@@ -1,4 +1,5 @@
 import networkx as nx
+import re
 
 #
 def strToAdjDicFormate(str, numNodes):
@@ -17,6 +18,7 @@ def strToAdjDicFormate(str, numNodes):
   print(nx.is_regular(G))
   return G
 
+#todo die anzahl der Farben muss  noch aus dem File gelesen werden
 def getGraphMatricsFormFile(fileName):
   f = open(fileName , "r")
   s = f.read()
@@ -31,7 +33,39 @@ def getGraphMatricsFormFile(fileName):
       print("\n")
 
 
+def getColorAdjMatFromFile(fileName):
+  f = open(fileName , "r")
+  s = f.read()
+  lis = []
+  for g in s.split("#")[1:]:
+    
+    # Regulärer Ausdruck, um alle 'Matrix(...)' Einträge zu finden
+    patternMat = r'Matrix\((.*?)\)'
 
+    patternColorTyp = r'l\d{2}'
+
+    # Alle passenden Einträge extrahieren
+    matchesMat = re.findall(patternMat, g)
+
+    matchesColorTyp = re.findall(patternColorTyp, g)
+
+    for match in matchesColorTyp:
+      print(f"Gefundener Farb Typ: {match}")
+      
+    # Ausgabe der extrahierten Informationen
+    for match in matchesMat:
+      print(f"Gefundene Matrix: {match}")
+      
+
+  
+
+
+
+
+
+
+
+  
       
 if __name__ == "__main__":
   fileName = "./08_4_3.asc"
