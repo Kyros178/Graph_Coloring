@@ -13,4 +13,4 @@ if __name__ == "__main__":
     #  filter for only asc datafiles 
     graphFiles = [f for f in dateien if "asc" in f]
 
-    print(graphFiles)
+   
