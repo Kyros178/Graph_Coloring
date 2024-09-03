@@ -3,7 +3,7 @@ import re
 import numpy as np
 
 #
-def strToAdjDicFormate(str, numNodes):
+def strToGraph(str, numNodes):
   G = nx.Graph()
   for i in range(1, numNodes+1):
       G.add_node(i)
@@ -16,24 +16,29 @@ def strToAdjDicFormate(str, numNodes):
       
       G.add_edge(x, int(i))
   #re = {int(t[0]): todo}
-  print(nx.is_regular(G))
+  # todo check if graph is regulär
+  # print(nx.is_regular(G))
   return G
 
 #todo die anzahl der Farben muss  noch aus dem File gelesen werden
 def getGraphMatricsFormFile(fileName):
+  numNodes = int( fileName.split("_")[0][-2:] )
+
   f = open(fileName , "r")
   s = f.read()
   lis = []
   result = []
   for g in s.split("Graph ")[1:]:
+    #print(g)
+    #print("test")
     graph = g.split("Taillenweite")[0].split('\n')[1:]
     finalGraph = graph[1:-1]
     lis.append(finalGraph)
 
-    for g in lis:
-      result.append( strToAdjDicFormate(g, 8) )
+  for g in lis:
+    result.append( strToGraph(g, numNodes) )
 
-    return result
+  return result
 
 
 def getColorAdjMatFromFile(fileName):
@@ -88,22 +93,6 @@ def getColorAdjMatFromFile(fileName):
   
       
 if __name__ == "__main__":
-  fileName = "./08_4_3.asc"
-  f = open(fileName , "r")
-  s = f.read()
-  #g = s.split("Graph ")
-  lis = []
-  testGraph = None
-  for g in s.split("Graph ")[1:]:
-    graph = g.split("Taillenweite")[0].split('\n')[1:]
-    #print("Graph: ")
-    testGraph = graph[1:-1]
-    lis.append(testGraph)
-    #print(graph[1:-1])
-    #print("\n\n")
+  fileName = "./graphAdj/08_4_3.asc"
+  result = getGraphMatricsFormFile(fileName)
 
-    #todo muss die acht noch umwandeln in die anzal der Knoten von dem Graphen
-    #print(strToAdjDicFormate(testGraph, 8))
-    for g in lis:
-      print(strToAdjDicFormate(g, 8).adj)
-      print("\n")

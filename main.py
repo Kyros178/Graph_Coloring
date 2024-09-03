@@ -27,8 +27,9 @@ if __name__ == "__main__":
     #print(colMat.keys())
 
     for file in graphFiles:
-        listGraphs   file_Extraction.getColorAdjMatFromFile(colorAdj_ordner_pfad  + file) ) 
+        listGraphs.extend( file_Extraction.getGraphMatricsFormFile(graph_ordner_pfad  + file) )
 
+    print(len (listGraphs) )
 
 
 
