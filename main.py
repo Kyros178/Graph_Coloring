@@ -4,8 +4,8 @@ import file_Extraction
 import os
 
 # Path to the directory with the adj. Matritces files of k-regular graphs
-graph_ordner_pfad = "./graphAdj"
-colorAdj_ordner_pfad = "./colorAdj"
+graph_ordner_pfad = "./graphAdj/"
+colorAdj_ordner_pfad = "./colorAdj/"
 
 if __name__ == "__main__":
      # All files in the path specified above
@@ -16,7 +16,20 @@ if __name__ == "__main__":
 
     dateien = os.listdir(colorAdj_ordner_pfad)
     colorAdjFiles = [f for f in dateien if "sage" in f]
-   
+
+    colMat = {}
+    listGraphs = []
     
-    file_Extraction.getColorAdjMatFromFile("colorAdj/2col-list.sage")
-   
+    for file in colorAdjFiles:
+        colMat.update( file_Extraction.getColorAdjMatFromFile(colorAdj_ordner_pfad  + file) ) 
+
+
+    #print(colMat.keys())
+
+    for file in graphFiles:
+        listGraphs   file_Extraction.getColorAdjMatFromFile(colorAdj_ordner_pfad  + file) ) 
+
+
+
+
+    

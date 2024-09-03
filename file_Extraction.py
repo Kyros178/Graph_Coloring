@@ -24,20 +24,23 @@ def getGraphMatricsFormFile(fileName):
   f = open(fileName , "r")
   s = f.read()
   lis = []
+  result = []
   for g in s.split("Graph ")[1:]:
     graph = g.split("Taillenweite")[0].split('\n')[1:]
     finalGraph = graph[1:-1]
     lis.append(finalGraph)
 
     for g in lis:
-      print(strToAdjDicFormate(g, 8).adj)
-      print("\n")
+      result.append( strToAdjDicFormate(g, 8) )
+
+    return result
 
 
 def getColorAdjMatFromFile(fileName):
   f = open(fileName , "r")
   s = f.read()
-  colorings = []
+  colorings = {}
+  numCol = 0
   
   for g in s.split("#")[1:]:
     
@@ -58,18 +61,23 @@ def getColorAdjMatFromFile(fileName):
     for match in matchesColorTyp:
       #print(f"Gefundener Farb Typ: {match}")
       typ = match
+      numCol = typ[1]
       
     # Ausgabe der extrahierten Informationen
     for match in matchesMat:
       #print(f"Gefundene Matrix: {match}")
       mat.append(np.array(match))
       
-    colorings.append((typ,mat))
+    colorings[int(typ[2])] = mat
 
-  for tup in colorings:
-    print(tup[0])
-    print(tup[1])
-  
+#  for tup in colorings:
+ #   print(tup[0])
+  #  print(tup[1])
+  result = {int(numCol): colorings}
+  #print(f"Colors: {numCol}")
+
+  return result
+
 
 
 
