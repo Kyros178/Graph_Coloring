@@ -17,12 +17,15 @@ def strToGraph(str, numNodes):
       G.add_edge(x, int(i))
   #re = {int(t[0]): todo}
   # todo check if graph is regulär
-  # print(nx.is_regular(G))
+  if not nx.is_regular(G):
+    print("Ein ausgelesener Graph war nicht regulär Irgendwas mit dem auslesen stimmt nicht \n ERROR!!!!!!!!!!!!!!!!")
+  
   return G
 
 #todo die anzahl der Farben muss  noch aus dem File gelesen werden
 def getGraphMatricsFormFile(fileName):
-  numNodes = int( fileName.split("_")[0][-2:] )
+  print(f"Get Graphs from file: {fileName}")
+  numNodes = int( fileName.split("/")[-1].split("_")[0] )
 
   f = open(fileName , "r")
   s = f.read()
@@ -42,6 +45,7 @@ def getGraphMatricsFormFile(fileName):
 
 
 def getColorAdjMatFromFile(fileName):
+  print(f"Get Colorings from file: {fileName}")
   f = open(fileName , "r")
   s = f.read()
   colorings = {}
