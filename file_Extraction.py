@@ -74,15 +74,23 @@ def getColorAdjMatFromFile(fileName):
       
     # Ausgabe der extrahierten Informationen
     for match in matchesMat:
+      lis = []
       #print(f"Gefundene Matrix: {match}")
-      mat.append(np.array(match))
+
+      #convert string to array
+      for s in match[1:-1].split("[")[1:] :
+        tar = s.split("]")[0].split(",")
+        lis.append( [int(i) for i in tar]  )
+      mat.append(np.array(lis))
+      
       
     colorings[int(typ[2])] = mat
 
 #  for tup in colorings:
  #   print(tup[0])
   #  print(tup[1])
-  result = {int(numCol): colorings}
+  result = {}
+  result[int(numCol)] =  colorings
   #print(f"Colors: {numCol}")
 
   return result
@@ -97,6 +105,6 @@ def getColorAdjMatFromFile(fileName):
   
       
 if __name__ == "__main__":
-  fileName = "./graphAdj/08_4_3.asc"
-  result = getGraphMatricsFormFile(fileName)
+  fileName = "./colorAdj/2col-list.sage"
+  result = getColorAdjMatFromFile(fileName)
 
