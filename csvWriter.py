@@ -4,8 +4,8 @@ import json
 import os
 
 
-def saveColorings(file,graphAdj,colorAdj,array_of_dictColorings):
-    if not os.path.exists(file):
+def saveColorings(filename,graphAdj,colorAdj,array_of_dictColorings):
+    if not os.path.exists(filename):
         with open(filename, mode='w', newline='') as file:
             writer = csv.writer(file)
     
@@ -14,7 +14,7 @@ def saveColorings(file,graphAdj,colorAdj,array_of_dictColorings):
             
     with open(filename, mode='a', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow([arr1, arr2, dict_str])
+        writer.writerow([graphAdj,colorAdj,coloringsToString( array_of_dictColorings ) ])
 
 
 def coloringsToString(listOfColorings):
@@ -40,9 +40,9 @@ if __name__ == "__main__":
     #dict_str = json.dumps(thisdict)
     dict_str = coloringsToString([thisdict,thisdict])
     # Dateiname der CSV-Datei
-    filename = 'output.csv'
+    csvFile = 'output.csv'
 
-    saveColorings(filename,arr1,arr2,dict_str)
+    saveColorings(csvFile,arr1,arr2,dict_str)
 
 
 

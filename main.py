@@ -10,6 +10,8 @@ import networkx as nx
 graph_ordner_pfad = "./graphAdj/"
 colorAdj_ordner_pfad = "./colorAdj/"
 
+csvFile = "results.csv"
+
 if __name__ == "__main__":
     dateien = os.listdir(graph_ordner_pfad)          # All files in the path specified above
     graphFiles = [f for f in dateien if "asc" in f]  #  filter for only asc datafiles
@@ -30,7 +32,7 @@ if __name__ == "__main__":
 
 
 
-    for graph in listGraphs: #todo erledigt [:10]:         # todo wieder alle graphen zulassen zum testen ist es jetzt weniger
+    for graph in listGraphs[:1]: #todo wieder alle graphen prüfem
         k = graph.degree(1)
         numColors = list( colMat.keys() )
         negCount = 0
@@ -55,8 +57,11 @@ if __name__ == "__main__":
                             negCount +=1
                             continue
                         solution = CSP_Solver.solveGraphCSP(graph,cAM)
+                        csvWriter.saveColorings(csvFile, adjGraph, cAM, solution )
+
                         if not solution:
                             #print(f"no solution for Graph: {graph.adj} \n and a colMat: {cAM}")
+                            
                             negCount +=1
                         else:
                             posCount +=1
