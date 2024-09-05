@@ -4,17 +4,17 @@ import json
 import os
 
 
-def saveColorings(filename,graphAdj,colorAdj,array_of_dictColorings):
+def saveColorings(filename,graphName,graphAdj,colorAdj,array_of_dictColorings):
     if not os.path.exists(filename):
         with open(filename, mode='w', newline='') as file:
             writer = csv.writer(file)
     
             # Überschriften der Spalten (optional)
-            writer.writerow(['Graph adj. Mat.', 'Color adj. Mat.', 'Dictionary of colorings'])
+            writer.writerow(['Graph name','Graph adj. Mat.', 'colour incidence matrix ', 'Dictionary of colorings'])
             
     with open(filename, mode='a', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow([graphAdj,colorAdj,coloringsToString( array_of_dictColorings ) ])
+        writer.writerow([graphName, graphAdj,colorAdj,coloringsToString( array_of_dictColorings ) ])
 
 
 def coloringsToString(listOfColorings):

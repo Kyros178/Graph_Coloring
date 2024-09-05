@@ -31,9 +31,10 @@ if __name__ == "__main__":
         listGraphs.extend( file_Extraction.getGraphMatricsFormFile(graph_ordner_pfad  + file) )
 
 
-
-    for graph in listGraphs[:1]: #todo wieder alle graphen prüfem
+    graphCounter = 0
+    for graph in listGraphs[:4]: #todo wieder alle graphen prüfem
         k = graph.degree(1)
+        graphCounter +=1
         numColors = list( colMat.keys() )
         negCount = 0
         posCount = 0
@@ -57,7 +58,7 @@ if __name__ == "__main__":
                             negCount +=1
                             continue
                         solution = CSP_Solver.solveGraphCSP(graph,cAM)
-                        csvWriter.saveColorings(csvFile, adjGraph, cAM, solution )
+                        csvWriter.saveColorings(csvFile,f"Graph no. {graphCounter}", adjGraph, cAM, solution )
 
                         if not solution:
                             #print(f"no solution for Graph: {graph.adj} \n and a colMat: {cAM}")
