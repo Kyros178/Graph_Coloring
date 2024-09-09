@@ -11,6 +11,7 @@ graph_ordner_pfad = "./graphAdj/"
 colorAdj_ordner_pfad = "./colorAdj/"
 
 csvFile = "results.csv"
+csvFileOverview = "resultsOverview.csv"
 
 if __name__ == "__main__":
     dateien = os.listdir(graph_ordner_pfad)          # All files in the path specified above
@@ -33,6 +34,7 @@ if __name__ == "__main__":
 
     graphCounter = 0
     for graph in listGraphs[:4]: #todo wieder alle graphen prüfem
+        posibleMatrixes = []
         k = graph.degree(1)
         graphCounter +=1
         numColors = list( colMat.keys() )
@@ -58,12 +60,16 @@ if __name__ == "__main__":
                             negCount +=1
                             continue
                         solution = CSP_Solver.solveGraphCSP(graph,cAM)
-                        csvWriter.saveColorings(csvFile,f"Graph no. {graphCounter}", adjGraph, cAM, solution )
+
 
                         if not solution:
                             #print(f"no solution for Graph: {graph.adj} \n and a colMat: {cAM}")
                             
                             negCount +=1
                         else:
+                            csvWriter.saveColorings(csvFile,f"Graph no. {graphCounter}", adjGraph, cAM, solution )
+
+                            posibleMatrixes.append(cAM)
                             posCount +=1
         print(f"posCount(graph and colMat have coloring): {posCount}\n negCount: {negCount}")
+        csvWriter.saveGraphAndColoring(csvFileOverview,f"Graph no. {graphCounter}", adjGraph, posibleMatrixes)

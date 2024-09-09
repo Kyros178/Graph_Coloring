@@ -17,6 +17,20 @@ def saveColorings(filename,graphName,graphAdj,colorAdj,array_of_dictColorings):
         writer.writerow([graphName, graphAdj,colorAdj,coloringsToString( array_of_dictColorings ) ])
 
 
+def saveGraphAndColoring(filename,graphName,graphAdj,colorAdjList):
+    if not os.path.exists(filename):
+        with open(filename, mode='w', newline='') as file:
+            writer = csv.writer(file)
+    
+            # Überschriften der Spalten (optional)
+            writer.writerow(['Graph name','Graph adj. Mat.', 'List of possible colour incidence matrix in this and the following columns '])
+            
+    with open(filename, mode='a', newline='') as file:
+        writer = csv.writer(file)
+        json_serializable_list = [arr.tolist() for arr in colorAdjList]
+        writer.writerow([graphName, graphAdj]  +  colorAdjList  )  #json.dumps(json_serializable_list ))
+
+
 def coloringsToString(listOfColorings):
     result = []
     for col in listOfColorings:
