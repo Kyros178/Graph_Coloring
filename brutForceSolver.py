@@ -24,19 +24,17 @@ def colorings(graph, numCol):
   return arr
 
 
-colMat = np.array([[0,4],[1,3]])
-#print(colMat)
 
 # der 4 simplex müsste der K_5 sein
-
+# todo probleme mit Graphen erwehnen wo der erste Knoten die Nummer 0 oder 1 hat!!!
 def correktCollorring(G ,col, c_A_M):
   l = len(c_A_M[0])
   for n in G.nodes:
     sum = np.zeros(l)
-    colorOfN = col[n]
+    colorOfN = col[n-1]
 
     for n2 in G.adj[n]:
-      colorOfN2 = col[n2]
+      colorOfN2 = col[n2-1]
       sum[colorOfN2] += 1
     if not np.array_equal(sum , c_A_M[colorOfN]):
       return False
@@ -57,7 +55,13 @@ def bruteForce(G, c_A_M):
 
 
 
-K_5 = nx.complete_graph(5)
+if __name__ == "__main__":
+  K_5 = nx.complete_graph(5)
+  print(K_5.nodes() )
 
+  
+  colMat = np.array([[0,4],[1,3]])
+  #print(colMat)
 
-bruteForce(K_5,colMat)
+  #probleme mit der nummerierung aus datei ist es von 1 und natürlich wäre es von 0
+  #bruteForce(K_5,colMat)
