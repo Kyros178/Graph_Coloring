@@ -6,6 +6,7 @@ import networkx as nx
 from  brutForceSolver import bruteForce
 import time
 import CSP_Solver
+import matplotlib.pyplot as plt
 
 graph_ordner_pfad = "./graphAdj/"
 colorAdj_ordner_pfad = "./colorAdj/"
@@ -48,6 +49,8 @@ def vergleicher(graphs,colMats):
         Time CSP Solver badConstraints: {CSPSolverBad_time}\
         Time CSP Solver Optimiert: {CSPSolverOpt_time}")
 
+    return (bruteForce_time,CSPSolverBad_time,CSPSolverOpt_time)
+
             
 
 if __name__ == "__main__":
@@ -87,9 +90,54 @@ if __name__ == "__main__":
 
     #print(len( list(graphs[8][4][0].neighbors(1)) ))
 
-   
-    vergleicher(graphs[7][4], colMat[3][4])
-   
+    
+    negCount=0
+    posCount=0
+    runtimes_brut = []
+    runtimes_bad = []
+    runtimes_opt = []
 
+    parameter_values =range(5,11)
 
-   
+    for n in parameter_values:
+        #todo richtig implementieren und überprüfen
+        print(n)
+        continue
+    # graph mit n Knoten reg= 4 und 3 färbungen
+        (bruteForce_time,CSPSolverBad_time,CSPSolverOpt_time) =vergleicher(graphs[n][4], colMat[3][4])
+        runtimes_brut.append(bruteForce_time)
+        runtimes_bad.append(CSPSolverBad_time)
+        runtimes_opt.append(CSPSolverOpt_time)
+        adjGraph = nx.to_numpy_array(graph)
+        eigenvaluesGraph = np.round(np.linalg.eigvals(adjGraph) , decimals=8)
+        eig =np.round(np.linalg.eigvals(cAM) , decimals=8)
+        eigenvaluesColMat = eig # unique wurde hier weggelassen
+        if not  np.all(np.isin(eigenvaluesColMat, eigenvaluesGraph)):
+            #print(eigenvaluesColMat)
+            negCount +=1
+        else:
+            posCount +=1
+
+    #todo posCount und negCount mit verschieden reg stufen testen da größere reg mehr color
+    # Matrizen zulässt!!!!!!!!!!!!!!!!!!!!!!!!!!
+    print(f"Es wurden {posCount+ negCount} Graph ColMat Paare gebildet.\
+    hiervon konnten { negCount} ignoriert werden und nur {posCount} hätten getestet werden")
+    bar_width = 0.25  # Breite der Balken
+    index = np.arange(len(parameter_values))  # x-Positionen für die Gruppen
+
+    # Barplots erstellen
+    plt.figure(figsize=(12, 6))
+    plt.bar(index, runtimes_brut, bar_width, label='Brute Force', color='skyblue')
+    plt.bar(index + bar_width, runtimes_bad, bar_width, label='CSP mit schlechten Constraints', color='lightgreen')
+    plt.bar(index + 2 * bar_width, runtimes_opt, bar_width, label='CSP optimiert', color='salmon')
+    
+    # Achsen und Titel beschriften
+    plt.xlabel('Parameter (n)')
+    plt.ylabel('Laufzeit (Sekunden)')
+    plt.title('Laufzeitvergleich von drei Funktionen')
+    plt.xticks(index + bar_width, [str(n) for n in parameter_values])
+    plt.legend()
+    
+    # Plot anzeigen
+    plt.tight_layout()
+    plt.show()
