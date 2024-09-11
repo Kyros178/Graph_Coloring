@@ -19,7 +19,9 @@ def vergleicher(graphs,colMats):
     #bruteForce
     for g in graphs:
         for c_A_M in colMats:
-            bruteForce(g,c_A_M)
+            re = bruteForce(g,c_A_M)
+            #print("bruteforce result:")
+            #print(re)
     end_time = time.time()
 
     bruteForce_time = end_time - start_time
@@ -29,7 +31,7 @@ def vergleicher(graphs,colMats):
     for g in graphs:
         for c_A_M in colMats:
             solution = CSP_Solver.solveGraphCSPBadConstraints(g,c_A_M)
-            print(solution)
+            #print(solution)
     end_time = time.time()
 
     CSPSolverBad_time = end_time - start_time
@@ -39,14 +41,14 @@ def vergleicher(graphs,colMats):
     for g in graphs:
         for c_A_M in colMats:
             solution = CSP_Solver.solveGraphCSP(g,c_A_M)
-            print(solution)
+            #print(solution)
     end_time = time.time()
 
     CSPSolverOpt_time = end_time - start_time
 
-    print(
-        f"Time Brute Force: {bruteForce_time}  \n \
-        Time CSP Solver badConstraints: {CSPSolverBad_time}\
+    print(f"\
+        Time Brute Force: {bruteForce_time}  \n\
+        Time CSP Solver badConstraints: {CSPSolverBad_time} \n\
         Time CSP Solver Optimiert: {CSPSolverOpt_time}")
 
     return (bruteForce_time,CSPSolverBad_time,CSPSolverOpt_time)
@@ -97,30 +99,32 @@ if __name__ == "__main__":
     runtimes_bad = []
     runtimes_opt = []
 
-    parameter_values =range(5,11)
+    #nur bis n = 9 da sonst zu viele lange tests
+    parameter_values =range(5,10)
 
     for n in parameter_values:
         #todo richtig implementieren und überprüfen
-        print(n)
-        continue
-    # graph mit n Knoten reg= 4 und 3 färbungen
+        #todo zeiten durch anzahl graphen teilen
+        # graph mit n Knoten reg= 4 und 3 färbungen
         (bruteForce_time,CSPSolverBad_time,CSPSolverOpt_time) =vergleicher(graphs[n][4], colMat[3][4])
         runtimes_brut.append(bruteForce_time)
         runtimes_bad.append(CSPSolverBad_time)
         runtimes_opt.append(CSPSolverOpt_time)
-        adjGraph = nx.to_numpy_array(graph)
-        eigenvaluesGraph = np.round(np.linalg.eigvals(adjGraph) , decimals=8)
-        eig =np.round(np.linalg.eigvals(cAM) , decimals=8)
-        eigenvaluesColMat = eig # unique wurde hier weggelassen
-        if not  np.all(np.isin(eigenvaluesColMat, eigenvaluesGraph)):
-            #print(eigenvaluesColMat)
-            negCount +=1
-        else:
-            posCount +=1
+        for g in graphs[n][4]:
+            for cAM in colMat[3][4]:
+                adjGraph = nx.to_numpy_array(g)
+                eigenvaluesGraph = np.round(np.linalg.eigvals(adjGraph) , decimals=8)
+                eig =np.round(np.linalg.eigvals(cAM) , decimals=8)
+                eigenvaluesColMat = eig # unique wurde hier weggelassen
+                if not  np.all(np.isin(eigenvaluesColMat, eigenvaluesGraph)):
+                    #print(eigenvaluesColMat)
+                    negCount +=1
+                else:
+                    posCount +=1
 
     #todo posCount und negCount mit verschieden reg stufen testen da größere reg mehr color
     # Matrizen zulässt!!!!!!!!!!!!!!!!!!!!!!!!!!
-    print(f"Es wurden {posCount+ negCount} Graph ColMat Paare gebildet.\
+    print(f"Es wurden {posCount+ negCount} (Graph, ColMat) Paare gebildet.\
     hiervon konnten { negCount} ignoriert werden und nur {posCount} hätten getestet werden")
     bar_width = 0.25  # Breite der Balken
     index = np.arange(len(parameter_values))  # x-Positionen für die Gruppen

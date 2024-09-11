@@ -47,10 +47,13 @@ def correktCollorring(G ,col, c_A_M):
 def bruteForce(G, c_A_M):
   numberOfColors = len(c_A_M[0])
   cols = colorings(G,numberOfColors)
+  results = []
   for c in cols:
     if correktCollorring(G, c, c_A_M):
-      print("Eine mögliche Färbung ist: ")
-      print(c)
+      #print("Eine mögliche Färbung ist: ")
+      #print(c)
+      results.append(c)
+  return results
 
 
 

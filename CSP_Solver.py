@@ -68,8 +68,9 @@ def solveGraphCSPBadConstraints(G,c_A_M) -> [dict]:
         #numberOfColors = len(c_A_M[0])
         for i in range(len(arg)) :
             sum = np.zeros(numberOfColors)
-            for j in G.neighbors(i) :
-                sum[arg[j]] += 1
+            for j in G.neighbors(i+1) :
+                #todo rausfinden ob das probleme macht da die knoten in meinem Graphen bei 1 anfangen
+                sum[arg[j-1]] += 1
 
             if not np.array_equal(sum , c_A_M[arg[i]]):
                    return False
