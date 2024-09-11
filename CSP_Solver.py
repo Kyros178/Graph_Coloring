@@ -50,3 +50,35 @@ def getColorings(s):
       col.append(sol[i])
     lastColorring.append( col )
   return lastColorring
+
+
+
+
+def solveGraphCSPBadConstraints(G,c_A_M) -> [dict]:
+    
+    numberOfColors = len(c_A_M[0])
+    problem = Problem()
+    for n in G.nodes:
+        problem.addVariable(n, range(numberOfColors))
+
+
+
+
+    def check(*arg):
+        #numberOfColors = len(c_A_M[0])
+        for i in range(len(arg)) :
+            sum = np.zeros(numberOfColors)
+            for j in G.neighbors(i) :
+                sum[arg[j]] += 1
+
+            if not np.array_equal(sum , c_A_M[arg[i]]):
+                   return False
+        return True
+
+
+    problem.addConstraint(FunctionConstraint(check))
+
+
+    s= problem.getSolutions()
+
+    return s
