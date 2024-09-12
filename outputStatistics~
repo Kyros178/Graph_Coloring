@@ -34,3 +34,9 @@ Get Graphs from file: ./graphAdj/10_5_3.asc
         Time Brute Force: 468.11369276046753  
          Time CSP Solver badConstraints: 249.61275100708008        Time CSP Solver Optimiert: 4.582362651824951
 Es wurden 1664 (Graph, ColMat) Paare gebildet.    hiervon konnten 1482 ignoriert werden und nur 182 hätten getestet werden
+
+erweitert um reg veränderung und die veränderung der Farbe: also neue ausführung des Programms :
+
+
+
+
