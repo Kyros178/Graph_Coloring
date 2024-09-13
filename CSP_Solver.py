@@ -59,7 +59,7 @@ def solveGraphCSPBadConstraints(G,c_A_M) -> [dict]:
     numberOfColors = len(c_A_M[0])
     problem = Problem()
     for n in G.nodes:
-        problem.addVariable(n, range(numberOfColors))
+       problem.addVariable(n, range(numberOfColors))
 
 
 
