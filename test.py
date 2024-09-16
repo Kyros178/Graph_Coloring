@@ -1,72 +1,64 @@
-
+import os
 import networkx as nx
 import inspect
+import file_Extraction
 
-# Alle Graphen-Generierungsfunktionen aus dem Modul networkx.generators holen
-generators = inspect.getmembers(nx.generators, inspect.isfunction)
+def k_con(g):
+        max = 0
+        for i in range(1,12):
+                if nx.is_k_edge_connected(g, i):
+                        max = i
+                else:
+                        return max
+        return max
 
-# Liste aller Generierungsfunktionen ausgeben und sie aufrufen
-for name, func in generators:
-        
-        #continue
-        
-        if "random" in name:
-                #print("random")
-                continue
-        if "shift_list" in str(inspect.signature(func)):
-                #print("shift_list" )
-                continue
-        if "repeats" in str(inspect.signature(func)):
-                #print("repeats")
-                continue
-        if "tau1" in str(inspect.signature(func)):
-                #print("tau1")
-                continue
-        
-        if "h," in str(inspect.signature(func)):
-                #print("h,")
-                continue
-        if "p," in str(inspect.signature(func)):
-                #print("p,")
-                continue
-        if "offsets" in str(inspect.signature(func)):
-                #print("offsets")
-                continue
-        if "G," in str(inspect.signature(func)):
-                #print("G,")
-                continue
-        if "r," in str(inspect.signature(func)):
-                #print("r,")
-                continue
-        if "theta," in str(inspect.signature(func)):
-                print("theta,")
-                continue
-        if "k," in str(inspect.signature(func)):
-                #print("k,")
-                continue
-        if "d," in str(inspect.signature(func)):
-                #print("d,")
-                continue
-        
-        #print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        signature = inspect.signature(func)  # Signatur der Funktion holen
-        print(f"{name}{signature}")
-                
-        continue
-        # Argumente, die wir für einige Generatoren verwenden könne
-        args = {}
-        
-        # Überprüfen der Signatur und festlegen von Beispielwerten
-        for param in signature.parameters.values():
-                if param.default is param.empty:
-                        # Wenn kein Standardwert vorhanden ist, setzen wir einen Beispielwert
-                        if param.name == "n":  # Anzahl der Knoten
-                                args[param.name] = 5  # Beispielwert
-                        elif param.name == "m":  # Anzahl der Kanten
-                                args[param.name] = 4  # Beispielwert
-                                # Fügen Sie hier zusätzliche Argumente hinzu, wenn erforderlich
 
-                                # Generierungsfunktion mit den festgelegten Argumenten aufrufen
-        if args:
-                graph = func(**args)  # Aufruf der Funktion mit den Argumenten
-                print(f"Generated graph {name} with {args}: {graph.edges()}")
+#Platonic Graphs
+graphenUndNamen = {
+        "Tetrahedral-Graph": nx.tetrahedral_graph(),
+        #"Würfel-Graph": nx.cubical_graph(),
+        "Octahedral-Graph": nx.octahedral_graph(),
+        "Dodecahedral-Graph": nx.dodecahedral_graph(),
+        "Icosahedral-Graph": nx.icosahedral_graph(),
+        "Petersen-Graph":nx.petersen_graph()
+}
+
+for n in range(1,6):
+        B = nx.complete_bipartite_graph(n, n)
+        num = str(n)
+        graphenUndNamen["K_{"+num+","+num+"}"] = B
+
+for i in range(1,5):
+        num = str(i)
+        
+        graphenUndNamen["K_{"+num+"}"] = nx.complete_graph(i)  # d-simplex
+        graphenUndNamen[f"Hypercube_dim={i}"] = nx.hypercube_graph(i)
+
+
+graph_ordner_pfad = "./graphAdj/"
+dateien = os.listdir(graph_ordner_pfad)          # All files in the path specified above
+graphFiles = [f for f in dateien if "asc" in f]  #  filter for only asc datafiles
+# filter graphs where the regularity is over 5 because we have no color Matrixes for that 
+graphFiles = [f for f in graphFiles if not "6_3.asc" in f and not "7_3.asc" in f]
+
+listGraphs = []
+for file in graphFiles:
+        listGraphs.extend( file_Extraction.getGraphMatricsFormFile(graph_ordner_pfad  + file) )
+
+num =0
+for g in listGraphs:
+        num +=1
+        for  (name, graph) in graphenUndNamen.items():
+                # num ==1 : #
+                if num ==1 : # nx.algorithms.isomorphism.GraphMatcher(g, graph).is_isomorphic() :
+                        node = list(graph.nodes())[0]
+                        if 4 > graph.number_of_nodes() or graph.degree(node ) < 3 :
+                                continue
+                        print("Name des Graphens: ",name)
+                        #print(graph)
+                        if "Hypercube_dim" in name :
+                                continue
+                        print("Nachbarn: ", len( list( graph.neighbors(node ) ) ))
+                        print(k_con(graph))
+
+#aut_group = nx.algorithms.isomorphism.GraphMatcher(B, B).is_isomorphic()
