@@ -50,14 +50,12 @@ for g in listGraphs:
         num +=1
         for  (name, graph) in graphenUndNamen.items():
                 # num ==1 : #
-                if num ==1 : # nx.algorithms.isomorphism.GraphMatcher(g, graph).is_isomorphic() :
+                if  num ==1 : #nx.is_isomorphic(g, graph) :
                         node = list(graph.nodes())[0]
-                        if 4 > graph.number_of_nodes() or graph.degree(node ) < 3 :
+                        if  4 > graph.number_of_nodes() or 10 <  graph.number_of_nodes()  or graph.degree(node ) < 3 or not nx.is_regular(graph) :
                                 continue
                         print("Name des Graphens: ",name)
                         #print(graph)
-                        if "Hypercube_dim" in name :
-                                continue
                         print("Nachbarn: ", len( list( graph.neighbors(node ) ) ))
                         print(k_con(graph))
 
