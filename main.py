@@ -33,7 +33,7 @@ if __name__ == "__main__":
 
 
     graphCounter = 0
-    for graph in listGraphs[:4]: #todo wieder alle graphen prüfem
+    for graph in listGraphs: #[:4]: #todo wieder alle graphen prüfem
         posibleMatrixes = []
         k = graph.degree(1)
         graphCounter +=1

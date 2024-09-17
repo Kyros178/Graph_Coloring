@@ -1,0 +1,71 @@
+python3 symetrigGraphAnalysis.py 
+Get Colorings from file: ./colorAdj/4col-list.sage
+Get Colorings from file: ./colorAdj/3col-list.sage
+Get Colorings from file: ./colorAdj/2col-list.sage
+('Name: ', ' Regularität: ', ' k-zusammenhangs Zahl: ', ' Anzahl Knoten: ', ' Anzahl Automorphismen: ', ' Anzahl ColMat m. Färb.: ', ' Anzahl Färbungen: ')
+('Tetrahedral-Graph', 3, 3, 4, 24.0, 4, 46)
+('Name: ', ' Regularität: ', ' k-zusammenhangs Zahl: ', ' Anzahl Knoten: ', ' Anzahl Automorphismen: ', ' Anzahl ColMat m. Färb.: ', ' Anzahl Färbungen: ')
+('Octahedral-Graph', 4, 4, 6, 48.0, 7, 71)
+('Name: ', ' Regularität: ', ' k-zusammenhangs Zahl: ', ' Anzahl Knoten: ', ' Anzahl Automorphismen: ', ' Anzahl ColMat m. Färb.: ', ' Anzahl Färbungen: ')
+('Dodecahedral-Graph', 3, 3, 20, 120.0, 10, 164)
+('Name: ', ' Regularität: ', ' k-zusammenhangs Zahl: ', ' Anzahl Knoten: ', ' Anzahl Automorphismen: ', ' Anzahl ColMat m. Färb.: ', ' Anzahl Färbungen: ')
+('Icosahedral-Graph', 5, 5, 12, 120.0, 10, 553)
+('Name: ', ' Regularität: ', ' k-zusammenhangs Zahl: ', ' Anzahl Knoten: ', ' Anzahl Automorphismen: ', ' Anzahl ColMat m. Färb.: ', ' Anzahl Färbungen: ')
+('Petersen-Graph', 3, 3, 10, 120.0, 6, 92)
+regularitäts probleme
+regularitäts probleme
+regularitäts probleme
+('Name: ', ' Regularität: ', ' k-zusammenhangs Zahl: ', ' Anzahl Knoten: ', ' Anzahl Automorphismen: ', ' Anzahl ColMat m. Färb.: ', ' Anzahl Färbungen: ')
+('K_{1,1}', 1, 1, 2, 2.0, 0, 0)
+regularitäts probleme
+regularitäts probleme
+regularitäts probleme
+('Name: ', ' Regularität: ', ' k-zusammenhangs Zahl: ', ' Anzahl Knoten: ', ' Anzahl Automorphismen: ', ' Anzahl ColMat m. Färb.: ', ' Anzahl Färbungen: ')
+('K_{2,2}', 2, 2, 4, 8.0, 0, 0)
+('Name: ', ' Regularität: ', ' k-zusammenhangs Zahl: ', ' Anzahl Knoten: ', ' Anzahl Automorphismen: ', ' Anzahl ColMat m. Färb.: ', ' Anzahl Färbungen: ')
+('K_{3,3}', 3, 3, 6, 72.0, 6, 83)
+('Name: ', ' Regularität: ', ' k-zusammenhangs Zahl: ', ' Anzahl Knoten: ', ' Anzahl Automorphismen: ', ' Anzahl ColMat m. Färb.: ', ' Anzahl Färbungen: ')
+('K_{4,4}', 4, 4, 8, 1152.0, 11, 970)
+('Name: ', ' Regularität: ', ' k-zusammenhangs Zahl: ', ' Anzahl Knoten: ', ' Anzahl Automorphismen: ', ' Anzahl ColMat m. Färb.: ', ' Anzahl Färbungen: ')
+('K_{5,5}', 5, 5, 10, 28800.0, 13, 5507)
+regularitäts probleme
+regularitäts probleme
+regularitäts probleme
+('Name: ', ' Regularität: ', ' k-zusammenhangs Zahl: ', ' Anzahl Knoten: ', ' Anzahl Automorphismen: ', ' Anzahl ColMat m. Färb.: ', ' Anzahl Färbungen: ')
+('K_{1}', 0, 0, 1, 1.0, 0, 0)
+regularitäts probleme
+regularitäts probleme
+regularitäts probleme
+('Name: ', ' Regularität: ', ' k-zusammenhangs Zahl: ', ' Anzahl Knoten: ', ' Anzahl Automorphismen: ', ' Anzahl ColMat m. Färb.: ', ' Anzahl Färbungen: ')
+('K_{2}', 1, 1, 2, 2.0, 0, 0)
+regularitäts probleme
+regularitäts probleme
+regularitäts probleme
+('Name: ', ' Regularität: ', ' k-zusammenhangs Zahl: ', ' Anzahl Knoten: ', ' Anzahl Automorphismen: ', ' Anzahl ColMat m. Färb.: ', ' Anzahl Färbungen: ')
+('K_{3}', 2, 2, 3, 6.0, 0, 0)
+('Name: ', ' Regularität: ', ' k-zusammenhangs Zahl: ', ' Anzahl Knoten: ', ' Anzahl Automorphismen: ', ' Anzahl ColMat m. Färb.: ', ' Anzahl Färbungen: ')
+('K_{4}', 3, 3, 4, 24.0, 4, 46)
+('Name: ', ' Regularität: ', ' k-zusammenhangs Zahl: ', ' Anzahl Knoten: ', ' Anzahl Automorphismen: ', ' Anzahl ColMat m. Färb.: ', ' Anzahl Färbungen: ')
+('K_{5}', 4, 4, 5, 120.0, 5, 125)
+('Name: ', ' Regularität: ', ' k-zusammenhangs Zahl: ', ' Anzahl Knoten: ', ' Anzahl Automorphismen: ', ' Anzahl ColMat m. Färb.: ', ' Anzahl Färbungen: ')
+('K_{6}', 5, 5, 6, 720.0, 8, 521)
+regularitäts probleme
+regularitäts probleme
+regularitäts probleme
+('Name: ', ' Regularität: ', ' k-zusammenhangs Zahl: ', ' Anzahl Knoten: ', ' Anzahl Automorphismen: ', ' Anzahl ColMat m. Färb.: ', ' Anzahl Färbungen: ')
+('K_{7}', 6, 6, 7, 5040.0, 0, 0)
+regularitäts probleme
+regularitäts probleme
+regularitäts probleme
+('Name: ', ' Regularität: ', ' k-zusammenhangs Zahl: ', ' Anzahl Knoten: ', ' Anzahl Automorphismen: ', ' Anzahl ColMat m. Färb.: ', ' Anzahl Färbungen: ')
+('K_{8}', 7, 7, 8, 40320.0, 0, 0)
+regularitäts probleme
+regularitäts probleme
+regularitäts probleme
+('Name: ', ' Regularität: ', ' k-zusammenhangs Zahl: ', ' Anzahl Knoten: ', ' Anzahl Automorphismen: ', ' Anzahl ColMat m. Färb.: ', ' Anzahl Färbungen: ')
+('K_{9}', 8, 8, 9, 362880.0, 0, 0)
+regularitäts probleme
+regularitäts probleme
+regularitäts probleme
+('Name: ', ' Regularität: ', ' k-zusammenhangs Zahl: ', ' Anzahl Knoten: ', ' Anzahl Automorphismen: ', ' Anzahl ColMat m. Färb.: ', ' Anzahl Färbungen: ')
+('K_{10}', 9, 9, 10, 3628800.0, 0, 0)
