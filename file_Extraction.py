@@ -1,6 +1,8 @@
 import networkx as nx
 import re
 import numpy as np
+import os
+
 
 #
 def strToGraph(str, numNodes):
@@ -97,14 +99,41 @@ def getColorAdjMatFromFile(fileName):
 
 
 
+def getColorAdjMatFromDir(colorAdj_ordner_pfad):
+  dateien = os.listdir(colorAdj_ordner_pfad)
+  colorAdjFiles = [f for f in dateien if "sage" in f]
+
+  colMat = {}
+    
+  for file in colorAdjFiles:
+    colMat.update( getColorAdjMatFromFile(colorAdj_ordner_pfad  + file) )
+
+  return colMat
 
 
 
+def getGraphListFromDir(graph_ordner_pfad):
+  listGraphs = []
+
+  dateien = os.listdir(graph_ordner_pfad)          # All files in the path specified above
+  graphFiles = [f for f in dateien if "asc" in f]  #  filter for only asc datafiles
+  # filter graphs where the regularity is over 5 because we have no color Matrixes for that 
+  graphFiles = [f for f in graphFiles if not "6_3.asc" in f and not "7_3.asc" in f]
+
+    
+    
+  for file in graphFiles:
+    listGraphs.extend( getGraphMatricsFormFile(graph_ordner_pfad  + file) )
 
 
+  return listGraphs
+  
   
       
 if __name__ == "__main__":
-  fileName = "./colorAdj/2col-list.sage"
-  result = getColorAdjMatFromFile(fileName)
-
+  dir  = "./colorAdj/"
+  dirGraphs = "./graphAdj/"
+  result = getColorAdjMatFromDir(dir)
+  res = getGraphListFromDir(dirGraphs)
+  #print(result[4][3])
+  print(len(res))

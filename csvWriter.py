@@ -30,7 +30,34 @@ def saveGraphAndColoring(filename,graphName,graphAdj,colorAdjList):
         json_serializable_list = [arr.tolist() for arr in colorAdjList]
         writer.writerow([graphName, graphAdj]  +  colorAdjList  )  #json.dumps(json_serializable_list ))
 
+        
 
+def saveSymInfo(filename,info,numPosColInzMat, numColorings):
+    head = ["Name: ", " Regularität: ", " k-zusammenhangs Zahl: "," Anzahl Knoten: "," Anzahl Automorphismen: ", " Anzahl ColMat m. Färb.: "," Anzahl Färbungen: "]
+      
+    if not os.path.exists(filename):
+        with open(filename, mode='w', newline='') as file:
+            writer = csv.writer(file)
+    
+            # Überschriften der Spalten (optional)
+            writer.writerow(head)
+            
+    with open(filename, mode='a', newline='') as file:
+        writer = csv.writer(file)
+        ''' falls ich eine liste brauche
+        list =[]
+        list.append(info["Name"])
+        list.append( info["Reg"])
+        list.append(info["k-zusmZahl"] )
+        list.append(info["numNodes"])
+        list.append(info["autGrupSize"])
+        list.append(numPosColInzMat)
+        list.append(numColorings)
+        '''
+        writer.writerow( [info["Name"], info["Reg"], info["k-zusmZahl"] , info["numNodes"], info["autGrupSize"],numPosColInzMat, numColorings] )
+
+        
+    
 def coloringsToString(listOfColorings):
     result = []
     for col in listOfColorings:
