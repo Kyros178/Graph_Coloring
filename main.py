@@ -19,7 +19,8 @@ if __name__ == "__main__":
     colMat = file_Extraction.getColorAdjMatFromDir(colorAdj_ordner_pfad)
     listGraphs = file_Extraction. getGraphListFromDir(graph_ordner_pfad)
 
-
+    negTotal = 0
+    posTotal = 0
     graphCounter = 0
     for graph in listGraphs: #[:4]: #todo wieder alle graphen prüfem
         posibleMatrixes = []
@@ -57,3 +58,7 @@ if __name__ == "__main__":
                             posCount +=1
         print(f"posCount(graph and colMat have coloring): {posCount}\n negCount: {negCount}")
         csvWriter.saveGraphAndColoring(csvFileOverview,f"Graph no. {graphCounter}", adjGraph, posibleMatrixes)
+        negTotal += negCount
+        posTotal += posCount
+        
+    print(f"Insgesammt wurden {posTotal+negTotal} Farbinzidenzmatrizen untersucht hiervon sind {posCount} durch den eigenwert check durchgekommen und {negCount} wurden hierdurch zurückgewiesen")
