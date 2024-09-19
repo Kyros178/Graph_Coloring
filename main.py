@@ -22,6 +22,7 @@ if __name__ == "__main__":
     negTotal = 0
     posTotal = 0
     graphCounter = 0
+    print("anzahl Graphen: ", len(listGraphs) )
     for graph in listGraphs: #[:4]: #todo wieder alle graphen prüfem
         posibleMatrixes = []
         k = graph.degree(1)
@@ -29,8 +30,9 @@ if __name__ == "__main__":
         numColors = list( colMat.keys() )
         negCount = 0
         posCount = 0
+        noSolutionCounter = 0
         adjGraph = nx.to_numpy_array(graph)
-
+        
         
         for nColor in numColors:
             for reg, listMat in colMat[nColor].items():
@@ -45,20 +47,22 @@ if __name__ == "__main__":
                             negCount +=1
                             continue
                         solution = CSP_Solver.solveGraphCSP(graph,cAM)
-
+                        posCount +=1
 
                         if not solution:
                             #print(f"no solution for Graph: {graph.adj} \n and a colMat: {cAM}")
                             
-                            negCount +=1
+                            noSolutionCounter  +=1
                         else:
-                            csvWriter.saveColorings(csvFile,f"Graph no. {graphCounter}", adjGraph, cAM, solution )
+                           csvWriter.saveColorings(csvFile,f"Graph no. {graphCounter}", adjGraph, cAM, solution )
 
                             posibleMatrixes.append(cAM)
-                            posCount +=1
-        print(f"posCount(graph and colMat have coloring): {posCount}\n negCount: {negCount}")
+                            
+        print(f"Der Graph hatte eine Regularität von {k} und hierbei konnten  {negCount} Kombinationen ausgeschlossen werden und {posCount} Paare mussten überprüft werden\n hiervon hatten {noSolutionCounter } keine Lösung")
         csvWriter.saveGraphAndColoring(csvFileOverview,f"Graph no. {graphCounter}", adjGraph, posibleMatrixes)
         negTotal += negCount
         posTotal += posCount
         
-    print(f"Insgesammt wurden {posTotal+negTotal} Farbinzidenzmatrizen untersucht hiervon sind {posCount} durch den eigenwert check durchgekommen und {negCount} wurden hierdurch zurückgewiesen")
+    print(f"Insgesammt wurden {posTotal+negTotal} Farbinzidenzmatrizen untersucht hiervon sind {posTotal} durch den eigenwert check durchgekommen und {negTotal} wurden hierdurch zurückgewiesen")
+
+    

@@ -105,4 +105,25 @@ change number of colors
         Time CSP Solver Optimiert: 34.64942741394043
 
 
-
+neuer durchlauf 19.09
+Knoten
+5 4
+        Time Brute Force: 0.2529573440551758  
+        Time CSP Solver badConstraints: 0.17718911170959473 
+        Time CSP Solver Optimiert: 0.17760586738586426
+6 4
+        Time Brute Force: 0.802837610244751  
+        Time CSP Solver badConstraints: 0.5325117111206055 
+        Time CSP Solver Optimiert: 0.20549750328063965
+7 4
+        Time Brute Force: 5.286009311676025  
+        Time CSP Solver badConstraints: 3.1693344116210938 
+        Time CSP Solver Optimiert: 0.45752382278442383
+8 4
+        Time Brute Force: 51.93366003036499  
+        Time CSP Solver badConstraints: 28.82564949989319 
+        Time CSP Solver Optimiert: 1.5472946166992188
+9 4
+        Time Brute Force: 444.68236231803894  
+        Time CSP Solver badConstraints: 233.4449918270111 
+        Time CSP Solver Optimiert: 4.333677053451538

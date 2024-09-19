@@ -103,7 +103,7 @@ if __name__ == "__main__":
 
     #nur bis n = 9 da sonst zu viele lange tests
     #todo wieder auf 9 bringen durch range(5,10) 
-    parameter_values =range(5,9)
+    parameter_values =range(5,10)
 
     numGraphs = [len(graphs[n][4]) for n in parameter_values]
 
@@ -136,9 +136,9 @@ if __name__ == "__main__":
     bar_width = 0.25  # Breite der Balken
     index = np.arange(len(parameter_values))  # x-Positionen für die Gruppen
 
-    runtimesPerGraph_brut = [int(a / b) for a, b in zip(runtimes_brut, numGraphs)]  
-    runtimesPerGraph_bad  = [int(a / b) for a, b in zip(runtimes_bad, numGraphs)]  
-    runtimesPerGraph_opt =  [int(a / b) for a, b in zip(runtimes_opt, numGraphs)]   
+    runtimesPerGraph_brut = [a / b for a, b in zip(runtimes_brut, numGraphs)]  
+    runtimesPerGraph_bad  = [a / b for a, b in zip(runtimes_bad, numGraphs)]  
+    runtimesPerGraph_opt =  [a / b for a, b in zip(runtimes_opt, numGraphs)]   
 
 
     #plot 1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -184,6 +184,8 @@ if __name__ == "__main__":
 
     plt.close()
     
+    # todo ab hier weiter !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+    pass
 
     print("regularität")
     #Regularität verändern !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -211,9 +213,9 @@ if __name__ == "__main__":
     bar_width = 0.25  # Breite der Balken
     index = np.arange(len(parameter_values))  # x-Positionen für die Gruppen
 
-    runtimesPerGraph_brut = [int(a / b) for a, b in zip(runtimes_brut, numGraphs)]  
-    runtimesPerGraph_bad  = [int(a / b) for a, b in zip(runtimes_bad, numGraphs)]  
-    runtimesPerGraph_opt =  [int(a / b) for a, b in zip(runtimes_opt, numGraphs)]   
+    runtimesPerGraph_brut = [a / b for a, b in zip(runtimes_brut, numGraphs)]  
+    runtimesPerGraph_bad  = [a / b for a, b in zip(runtimes_bad, numGraphs)]  
+    runtimesPerGraph_opt =  [a / b for a, b in zip(runtimes_opt, numGraphs)]   
 
 
     #plot 1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -287,9 +289,9 @@ if __name__ == "__main__":
     bar_width = 0.25  # Breite der Balken
     index = np.arange(len(parameter_values))  # x-Positionen für die Gruppen
 
-    runtimesPerGraph_brut = [int(a / b) for a, b in zip(runtimes_brut, numGraphs)]  
-    runtimesPerGraph_bad  = [int(a / b) for a, b in zip(runtimes_bad, numGraphs)]  
-    runtimesPerGraph_opt =  [int(a / b) for a, b in zip(runtimes_opt, numGraphs)]   
+    runtimesPerGraph_brut = [a / b for a, b in zip(runtimes_brut, numGraphs)]  
+    runtimesPerGraph_bad  = [a / b for a, b in zip(runtimes_bad, numGraphs)]  
+    runtimesPerGraph_opt =  [a / b for a, b in zip(runtimes_opt, numGraphs)]   
 
 
     #plot 1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
