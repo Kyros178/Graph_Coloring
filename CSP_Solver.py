@@ -3,7 +3,7 @@ from constraint import *
 import numpy as np
 import networkx as nx
 
-
+#@profile
 def create_Constrains(graph, c_A_M, numberOfColors):
     functions = []
     for nodeToCheck in graph.nodes:
@@ -26,7 +26,7 @@ def create_Constrains(graph, c_A_M, numberOfColors):
         functions.append((f,var))
     return functions
 
-
+#@profile
 def solveGraphCSP(graph,c_A_M) -> [dict]:
   numberOfColors =  len(c_A_M[0])
 

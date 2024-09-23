@@ -1,0 +1,14 @@
+Name, Regularität, k-zus. Zahl: , Anz. Knoten, Anz. Automorphismen, Anzahl ColMat mit Färb., Anz. Färbungen
+Tetrahedral-Graph,3,3,4,24.0,4,46
+Octahedral-Graph,4,4,6,48.0,7,71
+Dodecahedral-Graph,3,3,20,120.0,10,164
+Icosahedral-Graph,5,5,12,120.0,10,553
+Petersen-Graph,3,3,10,120.0,6,92
+"K_{3,3}",3,3,6,72.0,6,83
+"K_{4,4}",4,4,8,1152.0,11,970
+"K_{5,5}",5,5,10,28800.0,13,5507
+Hypercube_dim=3,3,3,8,48.0,11,134
+K_{4},3,3,4,24.0,4,46
+Hypercube_dim=4,4,4,16,384.0,24,1498
+K_{5},4,4,5,120.0,5,125
+K_{6},5,5,6,720.0,8,521

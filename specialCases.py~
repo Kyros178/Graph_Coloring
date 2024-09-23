@@ -1,0 +1,23 @@
+import os
+import networkx as nx
+import inspect
+import file_Extraction
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
+import matplotlib.pyplot as plt
+
+# CSV-Datei einlesen
+dfAll = pd.read_csv('resultsForSymAnalyse.csv') #,usecols=range(1, 7))
+
+#  Regularität, k-zus. Zahl: , Anz. Knoten, Anz. Automorphismen, Anzahl ColMat mit Färb., Anz. Färbungen 
+col = 5
+max_value = df.iloc[:, col].max()
+
+
+# Alle Zeilen anzeigen, bei denen Spalte 3 den maximalen Wert hat
+result = df[df.iloc[:, col] == max_value]
+
+# Ausgabe der Zeilen mit dem maximalen Wert
+print(result)

@@ -1,0 +1,7 @@
+, Regularität, k-zus. Zahl: , Anz. Knoten, Anz. Automorphismen, Anzahl ColMat mit Färb., Anz. Färbungen
+ Regularität,1.0,1.0,0.213,0.686,0.462,0.671
+ k-zus. Zahl: ,1.0,1.0,0.213,0.686,0.462,0.671
+ Anz. Knoten,0.213,0.213,1.0,0.556,0.771,0.719
+ Anz. Automorphismen,0.686,0.686,0.556,1.0,0.677,0.895
+ Anzahl ColMat mit Färb.,0.462,0.462,0.771,0.677,1.0,0.891
+ Anz. Färbungen,0.671,0.671,0.719,0.895,0.891,1.0

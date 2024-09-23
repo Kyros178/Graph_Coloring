@@ -4,7 +4,7 @@ import pynauty as nauty
 
 
 
-
+#@profile
 def eigenvalueCheckPositiv(graph,cAM):
     dec = 4
     adjGraph = nx.to_numpy_array(graph)
@@ -47,21 +47,32 @@ def importantGraphs():
         num = str(i)
         
         graphenUndNamen["K_{"+num+"}"] = nx.complete_graph(i)  # d-simplex
-        #graphenUndNamen[f"Hypercube_dim={i}"] = nx.hypercube_graph(i)
 
+        if i < 5:
+            G = nx.hypercube_graph(i)
+            new_labels = {node: index for index, node in enumerate(G.nodes())}
+            GnewNodes = nx.relabel_nodes(G, new_labels)
+            graphenUndNamen[f"Hypercube_dim={i}"] = GnewNodes
+        
     return graphenUndNamen
 
 
 def importantGraphInfo(name,graph):
     head = ["Name: ", " Regularität: ", " k-zusammenhangs Zahl: "," Anzahl Knoten: "," Anzahl Automorphismen: ", " Anzahl ColMat m. Färb.: "," Anzahl Färbungen: "]
     node = list(graph.nodes())[0]
-    reg = len(list( graph.neighbors(node )))
+    reg = int(len(list( graph.neighbors(node ))))
     conectNum = k_con(graph)
     numNodes = graph.number_of_nodes()
     G_nauty = nauty.Graph(numNodes)
     # Füge die Kanten aus dem NetworkX-Graphen hinzu
-    for n in graph.nodes:
-        G_nauty.connect_vertex(n, list(graph.neighbors(n)) )
+    if 0 in graph.nodes:
+        for n in graph.nodes:
+            G_nauty.connect_vertex(n, list(graph.neighbors(n)) )
+    else:
+        for n in graph.nodes:
+            # Graphen aus datei fangen mit 1 an und müssen auf 0 runtergesetzt werden
+            G_nauty.connect_vertex(n-1, [i-1 for i in list(graph.neighbors(n))] )
+    
 
     automorphism_group = nauty.autgrp(G_nauty )
     num = float(automorphism_group[1])
@@ -84,3 +95,4 @@ def importantGraphInfo(name,graph):
 if __name__ == "__main__":
 
     print("test")
+    importantGraphs()

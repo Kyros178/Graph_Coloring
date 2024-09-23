@@ -31,10 +31,12 @@ if __name__ == "__main__":
     
         numColorings = 0
         numPosColInzMat = 0
+        prob = False
         for c in range(2,5):
             if not reg in colMat[c].keys():
                 print("regularitäts probleme")
-                continue
+                prob = True
+                break
             for cAM in colMat[c][reg]:
                 
                
@@ -48,7 +50,9 @@ if __name__ == "__main__":
                     numPosColInzMat += 1
 
 
-                    
+
+        if prob:
+            continue
         csvWriter.saveSymInfo(filename,info,numPosColInzMat, numColorings)
         
         print(info)

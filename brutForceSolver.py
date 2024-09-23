@@ -1,4 +1,4 @@
-
+import file_Extraction
 import numpy as np
 import networkx as nx
 
@@ -59,12 +59,32 @@ def bruteForce(G, c_A_M):
 
 
 if __name__ == "__main__":
-  K_5 = nx.complete_graph(5)
-  print(K_5.nodes() )
-
   
-  colMat = np.array([[0,4],[1,3]])
-  #print(colMat)
+  adj = np.array(
+    [[0, 1, 1, 1, 1, 0, 0, 0, 0],
+     [1, 0, 1, 1, 1, 0, 0, 0, 0],
+     [1, 1, 0, 0, 0, 1, 1, 0, 0],
+     [1, 1, 0, 0, 0, 1, 0, 1, 0],
+     [1, 1, 0, 0, 0, 0, 1, 0, 1],
+     [0, 0, 1, 1, 0, 0, 0, 1, 1],
+     [0, 0, 1, 0, 1, 0, 0, 1, 1],
+     [0, 0, 0, 1, 0, 1, 1, 0, 1],
+     [0, 0, 0, 0, 1, 1, 1, 1, 0]]
+    )
+  print(adj)
 
+  G = nx.Graph(adj)
+  reg = len( list( G.neighbors(0) ) )
+  print(G.nodes,reg)
+  print(nx.is_regular(G))
+  colMat = file_Extraction.getColorAdjMatFromDir("./colorAdj/")
+  for c in range(2,5):
+    print(f"Farbenanzahl {c}")
+    for mat in colMat[c][reg]:
+      results = bruteForce(G,mat)
+      
+      if results:
+        print(results)
+        print(f"Durchlauf mit c ={c} und reg = {reg}:")
   #probleme mit der nummerierung aus datei ist es von 1 und natürlich wäre es von 0
   #bruteForce(K_5,colMat)

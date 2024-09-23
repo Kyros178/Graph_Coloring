@@ -17,23 +17,23 @@ def saveColorings(filename,graphName,graphAdj,colorAdj,array_of_dictColorings):
         writer.writerow([graphName, graphAdj,colorAdj,coloringsToString( array_of_dictColorings ) ])
 
 
-def saveGraphAndColoring(filename,graphName,graphAdj,colorAdjList):
+def saveGraphAndColoring(filename,graphName,info,numPosColInzMat, numColorings,graphAdj,colorAdjList):
     if not os.path.exists(filename):
         with open(filename, mode='w', newline='') as file:
             writer = csv.writer(file)
     
             # Überschriften der Spalten (optional)
-            writer.writerow(['Graph name','Graph adj. Mat.', 'List of possible colour incidence matrix in this and the following columns '])
+            writer.writerow(['Graph name','Graph adj. Mat.', " Regularität: ", " k-zusammenhangs Zahl: "," Anzahl Knoten: "," Anzahl Automorphismen: ", " Anzahl ColMat m. Färb.: "," Anzahl Färbungen: ", 'List of possible colour incidence matrix in this and the following columns '])
             
     with open(filename, mode='a', newline='') as file:
         writer = csv.writer(file)
         json_serializable_list = [arr.tolist() for arr in colorAdjList]
-        writer.writerow([graphName, graphAdj]  +  colorAdjList  )  #json.dumps(json_serializable_list ))
+        writer.writerow([graphName, graphAdj,info["Reg"], info["k-zusmZahl"] , info["numNodes"], info["autGrupSize"],numPosColInzMat, numColorings]  +  colorAdjList  )  #json.dumps(json_serializable_list ))
 
         
 
 def saveSymInfo(filename,info,numPosColInzMat, numColorings):
-    head = ["Name: ", " Regularität: ", " k-zusammenhangs Zahl: "," Anzahl Knoten: "," Anzahl Automorphismen: ", " Anzahl ColMat m. Färb.: "," Anzahl Färbungen: "]
+    head = ["Name", " Regularität", " k-zus. Zahl: "," Anz. Knoten"," Anz. Automorphismen", " Anzahl ColMat mit Färb."," Anz. Färbungen"]
       
     if not os.path.exists(filename):
         with open(filename, mode='w', newline='') as file:

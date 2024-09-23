@@ -1,0 +1,72 @@
+Timer unit: 1e-06 s
+
+Total time: 0.169925 s
+File: /home/nbeckmann/BA_Arbeit/Graph_Coloring/CSP_Solver.py
+Function: create_Constrains at line 6
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+     6                                           @profile
+     7                                           def create_Constrains(graph, c_A_M, numberOfColors):
+     8      3017       1826.1      0.6      1.1      functions = []
+     9     32000      22444.9      0.7     13.2      for nodeToCheck in graph.nodes:
+    10     28983      36847.4      1.3     21.7          neighbors = graph.neighbors(nodeToCheck)
+    11                                           
+    12                                           
+    13     28983      21829.4      0.8     12.8          def f(*arg):
+    14                                                     sum = np.zeros(numberOfColors)
+    15                                                     # counts the number for each color in the "nachbarschaft" of nodeToCheck
+    16                                                     for color in arg[1:]:
+    17                                                       sum[color] +=1
+    18                                           
+    19                                                     if not np.array_equal(sum , c_A_M[arg[0]]):
+    20                                                       return False
+    21                                                     return True
+    22                                           
+    23     28983      16641.2      0.6      9.8          var = []
+    24     28983      20635.5      0.7     12.1          var.append(nodeToCheck)
+    25     28983      25557.2      0.9     15.0          var.extend(neighbors)
+    26     28983      22420.3      0.8     13.2          functions.append((f,var))
+    27      3017       1722.7      0.6      1.0      return functions
+
+Total time: 120.861 s
+File: /home/nbeckmann/BA_Arbeit/Graph_Coloring/CSP_Solver.py
+Function: solveGraphCSP at line 29
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    29                                           @profile
+    30                                           def solveGraphCSP(graph,c_A_M) -> [dict]:
+    31      3017       4591.6      1.5      0.0    numberOfColors =  len(c_A_M[0])
+    32                                           
+    33      3017     314571.2    104.3      0.3    constrainsTuple = create_Constrains(graph, c_A_M, numberOfColors)
+    34      3017       9671.1      3.2      0.0    problem = Problem()
+    35                                           
+    36     32000      20410.6      0.6      0.0    for n in graph.nodes:
+    37     28983      85844.3      3.0      0.1      problem.addVariable(n, range(numberOfColors))
+    38                                           
+    39     32000      20554.7      0.6      0.0    for (f,var) in constrainsTuple:
+    40     28983      55362.7      1.9      0.0      problem.addConstraint(FunctionConstraint(f),var)
+    41                                           
+    42      3017  120347655.0  39889.8     99.6    s= problem.getSolutions()
+    43      3017       2407.0      0.8      0.0    return s
+
+Total time: 50.2731 s
+File: /home/nbeckmann/BA_Arbeit/Graph_Coloring/helpFunction.py
+Function: eigenvalueCheckPositiv at line 7
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+     7                                           @profile
+     8                                           def eigenvalueCheckPositiv(graph,cAM):
+     9    191547     111640.4      0.6      0.2      dec = 4
+    10    191547   18581026.7     97.0     37.0      adjGraph = nx.to_numpy_array(graph)
+    11                                               #print(adjGraph)
+    12    191547   11522447.9     60.2     22.9      eigenvaluesGraph = np.round(np.linalg.eigvals(adjGraph) , decimals=dec) 
+    13                                               #gets eigenvalues of colMat and removes duplicates because we only have to check if they are ones in the eigenvalues of the graph adj. Mat.
+    14    191547    8706335.7     45.5     17.3      eig = np.round(np.linalg.eigvals(cAM) , decimals=dec) 
+    15    191547    3281554.9     17.1      6.5      eigenvaluesColMat = np.unique( eig )
+    16                                           
+    17                                               #check for eigenvalues of colMat and adj. Mat of Graph compare https://www.math.uni-bielefeld.de/~frettloe/papers/perf-gr-col.pdf Theorem 10
+    18    191547    8070101.7     42.1     16.1      return  np.all(np.isin(eigenvaluesColMat, eigenvaluesGraph))
+

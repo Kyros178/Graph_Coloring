@@ -1,0 +1,7 @@
+, Regularität: , k-zusammenhangs Zahl: , Anzahl Knoten: , Anzahl Automorphismen: , Anzahl ColMat m. Färb.: , Anzahl Färbungen: 
+ Regularität: ,1.0,0.948,0.246,0.088,0.014,0.1
+ k-zusammenhangs Zahl: ,0.948,1.0,0.197,0.08,-0.006,0.076
+ Anzahl Knoten: ,0.246,0.197,1.0,0.019,-0.207,-0.021
+ Anzahl Automorphismen: ,0.088,0.08,0.019,1.0,0.247,0.972
+ Anzahl ColMat m. Färb.: ,0.014,-0.006,-0.207,0.247,1.0,0.369
+ Anzahl Färbungen: ,0.1,0.076,-0.021,0.972,0.369,1.0
