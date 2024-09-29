@@ -18,6 +18,7 @@ csvFile = "results.csv"
 csvFileOverview = "resultsOverview.csv"
 fileCsvSymAna = "resultsForSymAnalyse.csv"
 
+#@profile
 def main():
     colMat = file_Extraction.getColorAdjMatFromDir(colorAdj_ordner_pfad)
     listGraphs = file_Extraction. getGraphListFromDir(graph_ordner_pfad)

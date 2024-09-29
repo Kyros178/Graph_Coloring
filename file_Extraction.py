@@ -4,7 +4,7 @@ import numpy as np
 import os
 
 
-#
+#@profile
 def strToGraph(str, numNodes):
   G = nx.Graph()
   for i in range(1, numNodes+1):
@@ -25,6 +25,7 @@ def strToGraph(str, numNodes):
   return G
 
 #todo die anzahl der Farben muss  noch aus dem File gelesen werden
+#@profile
 def getGraphMatricsFormFile(fileName):
   print(f"Get Graphs from file: {fileName}")
   numNodes = int( fileName.split("/")[-1].split("_")[0] )
@@ -45,7 +46,7 @@ def getGraphMatricsFormFile(fileName):
 
   return result
 
-
+#@profile
 def getColorAdjMatFromFile(fileName):
   print(f"Get Colorings from file: {fileName}")
   f = open(fileName , "r")
@@ -98,7 +99,7 @@ def getColorAdjMatFromFile(fileName):
   return result
 
 
-
+#@profile
 def getColorAdjMatFromDir(colorAdj_ordner_pfad):
   dateien = os.listdir(colorAdj_ordner_pfad)
   colorAdjFiles = [f for f in dateien if "sage" in f]
@@ -111,7 +112,7 @@ def getColorAdjMatFromDir(colorAdj_ordner_pfad):
   return colMat
 
 
-
+#@profile
 def getGraphListFromDir(graph_ordner_pfad):
   listGraphs = []
 

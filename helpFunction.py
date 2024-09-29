@@ -17,7 +17,7 @@ def eigenvalueCheckPositiv(graph,cAM):
     #check for eigenvalues of colMat and adj. Mat of Graph compare https://www.math.uni-bielefeld.de/~frettloe/papers/perf-gr-col.pdf Theorem 10
     return  np.all(np.isin(eigenvaluesColMat, eigenvaluesGraph))
 
-
+#@profile
 def k_con(g):
         max = 0
         for i in range(1,12):
@@ -56,7 +56,7 @@ def importantGraphs():
         
     return graphenUndNamen
 
-
+#@profile
 def importantGraphInfo(name,graph):
     head = ["Name: ", " Regularität: ", " k-zusammenhangs Zahl: "," Anzahl Knoten: "," Anzahl Automorphismen: ", " Anzahl ColMat m. Färb.: "," Anzahl Färbungen: "]
     node = list(graph.nodes())[0]
